@@ -1,0 +1,362 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #f0f0f0;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+canvas#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+header {
+  background-color: transparent;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+header img {
+  height: 50px;
+}
+
+header h1 {
+  font-size: 2rem;
+  background-image: linear-gradient(to bottom, #98fb98, #008033);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transform: translate(-5%, 0);
+}
+
+.games-grid {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.kiwi-logo {
+  transform: translate(0, -8%);
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-gradient {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+.game-card {
+  background: linear-gradient(
+    var(--gradient-angle),
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  animation: rotate-gradient 15s linear infinite;
+  padding: 4px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s;
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+}
+
+.game-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card-sap {
+  background-image: url("https://tr.rbxcdn.com/180DAY-74f37e645fbba4a51207ee3bef48fdea/768/432/Image/Webp/noFilter");
+}
+
+.game-card-sab {
+  background-image: url("https://tr.rbxcdn.com/180DAY-c020349c01933ac543e8acd349f932d0/768/432/Image/Webp/noFilter");
+}
+
+.game-card-sac {
+  background-image: url("https://tr.rbxcdn.com/180DAY-d12f1cdbfabc2cdbed63e243858cf247/420/420/Image/Webp/noFilter");
+}
+
+.game-card-99nights {
+  background-image: url("https://tr.rbxcdn.com/180DAY-821d9599ac5c3ebe3ade368489c06110/420/420/Image/Webp/noFilter");
+}
+
+.game-card-pvb {
+  background-image: url("https://tr.rbxcdn.com/180DAY-f7c7a703050a702aef0bb4b78c8d2bfd/420/420/Image/Webp/noFilter");
+}
+
+.game-card-pvbr {
+  background-image: url("https://tr.rbxcdn.com/180DAY-3d8bd77defdd96f6aff051aa99f54776/420/420/Image/Webp/noFilter");
+}
+
+.modded-text {
+  position: absolute;
+  width: 120%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.game-card .content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 12px;
+  text-align: center;
+  z-index: 2;
+}
+
+.game-card h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+}
+
+.stat-icon {
+  height: 16px;
+  width: 16px;
+  filter: brightness(0) invert(1);
+}
+
+.stat-item span {
+  font-weight: bold;
+}
+
+.social-links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.roblox-link {
+  display: block;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.roblox-link:hover {
+  transform: scale(1.1);
+}
+
+.roblox-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/roblox.webp);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  filter: hue-rotate(220deg) saturate(300%) brightness(40%) contrast(100%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.roblox-link:hover::after {
+  opacity: 1;
+}
+
+.roblox-logo {
+  height: 36px;
+  display: block;
+}
+
+.discord-link {
+  display: block;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.discord-link:hover {
+  transform: scale(1.1);
+}
+
+.discord-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/discord.webp);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  filter: invert(56%) sepia(87%) saturate(1291%) hue-rotate(194deg)
+    brightness(91%) contrast(85%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.discord-link:hover::after {
+  opacity: 1;
+}
+
+.discord-logo {
+  height: 36px;
+  display: block;
+}
+
+.youtube-link {
+  display: block;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.youtube-link:hover {
+  transform: scale(1.1);
+}
+
+.youtube-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/youtube.webp);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  filter: invert(24%) sepia(94%) saturate(11000%) hue-rotate(1deg)
+    brightness(95%) contrast(120%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.youtube-link:hover::after {
+  opacity: 1;
+}
+
+.youtube-logo {
+  height: 36px;
+  display: block;
+}
+
+.game-card.coming-soon .game-link {
+  cursor: not-allowed;
+}
+
+.game-card.coming-soon:hover {
+  transform: none;
+}
+
+.coming-soon-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
+
+.coming-soon-overlay span {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px black;
+}
+
+.coming-soon-overlay-2 {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
+
+.coming-soon-overlay-2 span {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px black;
+}
+
+.coming-soon-overlay-3 {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
+
+.coming-soon-overlay-3 span {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px black;
+}
+
+
